@@ -12,7 +12,7 @@ public abstract class Fighter extends Actor {
         vida = vida - damage;
     }
 
-    public int attack(){ // getter de puntos de ataque.
+    public int getAttackP(){ // getter de puntos de ataque.
         return attackPoints;
     }
     
