@@ -5,12 +5,10 @@ public abstract class Hero extends Fighter {
 
     public Hero(String nombre, String mensaje, int vida, int attackPoints) {
         super(nombre, mensaje, vida, attackPoints);
-        //TODO Auto-generated constructor stub
     }
 
-    public void addItemToBag(){ // añade un item a la lista de items. 
-        bagOfItems.add(new Item()); // Llamar un método para poner los parámetros. 
-    }
+    public abstract void addItemToBag(Item item);
+    
 
     public void remItemFromBag(String itemName){ // elimina un item de la lista. 
         for(int i = 0; i<bagOfItems.size(); i++){
