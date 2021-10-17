@@ -1,16 +1,17 @@
 public class Warrior extends Hero{
 
-    public Warrior(String nombre, String mensaje, int vida, int attackPoints) {
-        super(nombre, mensaje, vida, attackPoints);
+    public Warrior(String nombre, String mensaje, int vida, int attackPoints, int bagSize) {
+        super(nombre, mensaje, vida, attackPoints, bagSize);
         //TODO Auto-generated constructor stub
+        setterAuto();
     }
 
-    @Override
-    public void addItemToBag(String name int effect) {
-        if(bagOfItems.size()<3){
-            bagOfItems.add
-        }
-        
+    public void setterAuto(){
+        this.vida = 20;
+        this.attackPoints = 8;
+        this.bagSize = 3;
     }
+
     
+
 }
