@@ -9,7 +9,7 @@ public abstract class Fighter extends Actor {
 
     @Override
     public void takingDamage(int damage) { // setter de vida. 
-        vida = vida - damage;
+        this.vida = vida - damage;
     }
 
     public int getAttackP(){ // getter de puntos de ataque.
