@@ -1,19 +1,25 @@
-public abstract class Fighter extends Actor {
-
+public abstract class Fighter {
+    int vida;
     int attackPoints;
+    
+    String name;
+    String message;
 
-    public Fighter(String nombre, String mensaje, int vida, int attackPoints) {
-        super(nombre, mensaje, vida);
-        this.attackPoints = attackPoints;
+    public Fighter(String name, String message){
+        this.name = name;
+        this.message = message;
     }
 
-    @Override
-    public void takingDamage(int damage) { // setter de vida. 
+    public void takingDamage(int damage){
         this.vida = vida - damage;
     }
 
-    public int getAttackP(){ // getter de puntos de ataque.
+    public int getAttackPoints(){
         return attackPoints;
     }
+
+
+
+
     
 }

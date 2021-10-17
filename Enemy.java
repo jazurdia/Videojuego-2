@@ -4,7 +4,7 @@ public abstract class Enemy extends Fighter {
     String nameOfAbility;
 
     public Enemy(String nombre, String mensaje, int vida, int attackPoints, String nameOfAbility,  int extradamage) {
-        super(nombre, mensaje, vida, attackPoints);
+        super(nombre, mensaje);
         this.extradamage = extradamage;
         this.nameOfAbility = nameOfAbility;
     }
@@ -13,6 +13,8 @@ public abstract class Enemy extends Fighter {
         // Método para mostrar un mensaje de "x wey usó x habilidad. "
         return extradamage;
     }
+
+    public abstract void setterAuto();
 
 
     

@@ -4,9 +4,9 @@ public abstract class Hero extends Fighter {
     int bagSize;
     ArrayList<Item> bagOfItems = new ArrayList<Item>();
 
-    public Hero(String nombre, String mensaje, int vida, int attackPoints, int bagSize) {
-        super(nombre, mensaje, vida, attackPoints);
-        this.bagSize=bagSize;
+    public Hero(String nombre, String mensaje) {
+        super(nombre, mensaje);
+        
     }
 
     public void addItemToBag(Item item){
@@ -18,7 +18,7 @@ public abstract class Hero extends Fighter {
         }
     }
     
-
+    // Pero, si se usa de uno en uno, entonces que? REVISAR 
     public void remItemFromBag(String itemName){ // elimina un item de la lista. 
         for(int i = 0; i<bagOfItems.size(); i++){
             if(itemName == bagOfItems.get(i).getName()){
@@ -28,12 +28,5 @@ public abstract class Hero extends Fighter {
             }
         }
     }
-
-
-    
-
-
-
-
     
 }

@@ -1,14 +1,13 @@
 public class Explorer extends Hero {
 
-    public Explorer(String nombre, String mensaje, int vida, int attackPoints, int bagSize) {
-        super(nombre, mensaje, vida, attackPoints, bagSize);
+    public Explorer(String nombre, String mensaje) {
+        super(nombre, mensaje);
         //TODO Auto-generated constructor stub
-        setterAuto();
-    }
-    
-    public void setterAuto(){
-        this.vida = 10;
+        
+        this.vida = 15;
         this.attackPoints = 5;
-        this.bagSize = 5;
+        this.bagSize = 6;
     }
+
+    
 }
