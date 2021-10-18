@@ -10,6 +10,9 @@ public abstract class Fighter {
         this.message = message;
     }
 
+    public Fighter() {
+    }
+
     public void takingDamage(int damage){
         this.vida = vida - damage;
     }
