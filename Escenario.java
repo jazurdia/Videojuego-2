@@ -1,9 +1,12 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Escenario {
     Vista vista = new Vista();
-    ArrayList<Hero> players = new ArrayList<Hero>();
+    ArrayList<Hero> players = new ArrayList<Hero>(); 
+    ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
+    //El usuario decide la cantidad de heroes que habrá en la partida. 
     public void settingPlayers(){
         boolean stop = false;
         do {
@@ -33,9 +36,52 @@ public class Escenario {
 
     }
 
-    
+    //El programa decide la cantidad de enemigos y enemigos jefes que deberán haber. 
+    public void settingEnemies(int num){
+        
+        for(int i=0; i<= num; i++){
+            addEnemyRandom();
+        }
+        
+    }
+
+    public void addEnemyRandom(){
+        Random rand = new Random();
+        switch (rand.nextInt(3)) {
+            case 1: // Troll
+                enemies.add(new Troll());
+                break;
+            
+            case 2:
+                enemies.add(new Dwarf());
+                break;
+            
+            case 3:
+                enemies.add(new Orc());
+                break;
+        }
+    }
+
+    public void settingItems(Hero hero){
+        
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void match(){ // método que ejecutará el main. 
         settingPlayers();
+        settingEnemies(vista.askingNumEnemies());
     }
 }

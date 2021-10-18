@@ -100,8 +100,29 @@ public class Vista {
 
     }
     
+    public int askingNumEnemies(){
+        
+        boolean stop = false;
+        int num = 0;
+        Scanner in = new Scanner(System.in);
 
+        while(stop == false){
+            show("Elige el número de enemigos regulares que tendrá el escenario. ");
+            try {
+                num = in.nextInt();
+                stop = true;
+            } catch (Exception e) {
+                in = new Scanner(System.in);
+                denuevo();
+            }
 
+        }
+        return num;        
+    }
+
+    public int void selectingItems(){
+        show("") 
+    }
     
     
 

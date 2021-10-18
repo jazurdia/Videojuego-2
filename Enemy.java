@@ -2,13 +2,6 @@ public abstract class Enemy extends Fighter {
 
     int extradamage;
     String nameOfAbility;
-    
-    
-    public Enemy(String name, String message) {
-        super();
-        //TODO Auto-generated constructor stub
-    }
-
 
     public Enemy() {
     }

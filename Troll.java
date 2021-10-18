@@ -1,19 +1,18 @@
 public class Troll extends Enemy {
 
-    public Troll(String name) {
+    public Troll() {
         super();
-        //TODO Auto-generated constructor stub
         
-        this.message = "другой день будет";
+        this.name = "Trol de los bosques";
+        this.message = "Nadie pasará por los bosques";
         this.vida = 20;
         this.attackPoints = 7;
         this.extradamage = 13;
-        this.nameOfAbility = "Super Hachazo";
+        this.nameOfAbility = "Hachazo Malicioso";
 
     }
 
-    public Troll() {
-    }
+    
 
     
     
