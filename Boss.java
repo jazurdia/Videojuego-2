@@ -1,10 +1,14 @@
-public abstract class Boss extends Enemy{
+import java.util.*;
+public class Boss extends Enemy{
 
-    public Boss() {
+    public Boss(){
         super();
         //TODO Auto-generated constructor stub
     }
 
-    public abstract void specialAbility();
+    public void specialAbility(){ // healing
+        Random random = new Random();
+        this.vida = vida + random.nextInt(10);
+    }
     
 }
