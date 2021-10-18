@@ -6,7 +6,7 @@ public class Escenario {
 
     public void settingPlayers(){
         boolean stop = false;
-        while (stop == false){
+        do {
             int typeOfCharacter = vista.settingCharacter();
             switch (typeOfCharacter) {
             
@@ -24,13 +24,18 @@ public class Escenario {
                 
                 case 4:
                     stop = true;
+                    break;
             }
 
         }
+        
+        while(stop != true);
 
     }
 
-
-
     
+
+    public void match(){ // método que ejecutará el main. 
+        settingPlayers();
+    }
 }
