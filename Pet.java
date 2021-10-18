@@ -11,6 +11,10 @@ public class Pet extends Fighter{
 
     }
 
+    public Pet(){ // CONSTRUCTOR ALTERNATIVO
+
+    }
+
     @Override
     public void takingDamage(int damage){
         this.vida = vida - damage;
@@ -27,7 +31,7 @@ public class Pet extends Fighter{
     
     public void resCoolDown(){
         this.coolDown = coolDown - 1;
-        if(coolDown == 0){
+        if(coolDown <= 0){
             reGenerate();
         }
     }
