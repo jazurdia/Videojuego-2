@@ -9,13 +9,29 @@ public abstract class Hero extends Fighter {
         
     }
 
-    public void addItemToBag(Item item){
-        if(bagOfItems.size()<=bagSize){
-            bagOfItems.add(item);
+    public void addItemToBag(int num){
+        if(bagOfItems.size()<=bagSize){  
+            switch (num) {
+                case 1: // orbe de curación
+                    bagOfItems.add(new ItemHeal());
+                    break;
+            
+                case 2: // orbe de daño
+                    bagOfItems.add(new ItemDamage());
+                    break;
+                
+                case 3: // Bomba nuclear
+                    bagOfItems .add(new ItemBomb());
+                    break;
+            }
             //Mensaje de "se añadió el item."
         }else{
             //mensaje de "its full."
         }
+    }
+
+    public int getBagSize(){
+        return bagSize;
     }
     
     // Pero, si se usa de uno en uno, entonces que? REVISAR 
@@ -28,5 +44,7 @@ public abstract class Hero extends Fighter {
             }
         }
     }
+
+    
     
 }

@@ -7,6 +7,7 @@ public class Warrior extends Hero{
         this.vida = 20;
         this.attackPoints = 8;
         this.bagSize = 3;
+
     }
 
 }

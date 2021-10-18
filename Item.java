@@ -3,7 +3,6 @@ public class Item {
     int effect; // daño causado.
 
     public Item(){
-        
     }
 
     public String getName(){

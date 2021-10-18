@@ -29,6 +29,7 @@ public class Vista {
             }
 
         }
+        in.close();
         return menu;
     }
 
@@ -120,9 +121,27 @@ public class Vista {
         return num;        
     }
 
-    public int void selectingItems(){
-        show("") 
+    public int selectingItems(){
+        int num = 0;
+        boolean stop = false;
+        Scanner in = new Scanner(System.in);
+        while (stop == false){
+            show("Elige el item que quieras añadir a tu inventario.");
+            show("1. Item de curación");
+            show("2. Item de daño pequeño");
+            show("3. Item de gran daño");
+            try {
+                num = in.nextInt();
+                stop = true;
+            } catch (Exception e) {
+                in = new Scanner(System.in);
+                denuevo();
+            }
+        }
+        return num;
     }
+
+
     
     
 

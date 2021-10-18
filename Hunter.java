@@ -11,6 +11,7 @@ public class Hunter extends Hero {
         this.vida = 5;
         this.attackPoints = 3;
         this.bagSize = 2;
+
     }    
 
     public void addPetToPets(Pet pet){

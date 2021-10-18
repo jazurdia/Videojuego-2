@@ -7,6 +7,7 @@ public class Explorer extends Hero {
         this.vida = 15;
         this.attackPoints = 5;
         this.bagSize = 6;
+
     }
 
     

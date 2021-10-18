@@ -14,15 +14,25 @@ public class Escenario {
             switch (typeOfCharacter) {
             
                 case 1:
-                    players.add(new Warrior(vista.namingCharacter(), vista.messageOfCharacter()));
+                    players.add(new Warrior(vista.namingCharacter(), vista.messageOfCharacter()));                    
+                    for(int i = 0; i<= players.size()-1; i++){
+                        players.get(players.size()-1).addItemToBag(vista.selectingItems());
+                    }
+                    
                     break;
             
                 case 2:
                     players.add(new Explorer(vista.namingCharacter(), vista.messageOfCharacter()));
+                    for(int i = 0; i<= players.size()-1; i++){
+                        players.get(players.size()-1).addItemToBag(vista.selectingItems());
+                    }
                     break;
     
                 case 3: 
                     players.add(new Hunter(vista.namingCharacter(), vista.messageOfCharacter()));
+                    for(int i = 0; i<= players.size()-1; i++){
+                        players.get(players.size()-1).addItemToBag(vista.selectingItems());
+                    }
                     break;
                 
                 case 4:
@@ -60,10 +70,6 @@ public class Escenario {
                 enemies.add(new Orc());
                 break;
         }
-    }
-
-    public void settingItems(Hero hero){
-        
     }
 
 
