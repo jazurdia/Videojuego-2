@@ -161,13 +161,29 @@ public class Vista {
         return menu;
     }
 
-    public int listOfFighters(ArrayList<Fighter> list){
-        int index = 0;
-        boolean stop = false;
-        Scanner in = new Scanner(System.in);
+    public void listOfHeroes(ArrayList<Hero> list){
+        show("************* PLAYERS *************");
         for(int i=0; i<list.size() ; i++){
             show("no. " + i + " - " + list.get(i).getName());
         }
+        
+    }
+
+    public void listOfEnemies(ArrayList<Enemy> list){
+        show("************* ENEMIES *************");
+        for(int i=0; i<list.size() ; i++){
+            show("no. " + i + " - " + list.get(i).getName());
+        }
+    }
+
+    public void turnOfHero(int index, ArrayList<Hero> list){
+        show("\nEs turno de " + list.get(index).getName() + " ." );
+    }
+
+    public int whoGetsAttacked(){
+        int index = 0;
+        boolean stop = false;
+        Scanner in = new Scanner(System.in);
         while (stop == false){
             show("Ingresa el número de quien quieras atacar. ");
             try {
@@ -179,6 +195,29 @@ public class Vista {
             }
         }
         return index;
+    }
+
+    public void showLifeEnemies(ArrayList<Enemy> list, int index){
+        show("La vida de " + list.get(index).getName() + " es de " + list.get(index).getLife());
+    }
+
+    public int whoCategoryIsAttacked(){
+        int whoCategoryIsAttacked = 0;
+        boolean stop = false;
+        Scanner in = new Scanner(System.in);
+        while (stop == false){
+            show("1. Enemigos Normales");
+            show("2. Enemigos Bosses");
+            show("3. RaidBoss");
+            try {
+                whoCategoryIsAttacked = in.nextInt();
+                stop = true;
+            } catch (Exception e) {
+                in = new Scanner (System.in);
+                denuevo();
+            }
+        }
+        return whoCategoryIsAttacked;
     }
     
     

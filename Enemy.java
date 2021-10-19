@@ -7,7 +7,7 @@ public abstract class Enemy extends Fighter {
     }
 
 
-    public int useAbility(){
+    public int getExtraDamage(){
         // Método para mostrar un mensaje de "x wey usó x habilidad. "
         return extradamage;
     }

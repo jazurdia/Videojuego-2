@@ -46,12 +46,15 @@ public class Escenario {
         for(int i=0; i<= num; i++){
             addEnemyRandom();
         }
+        Random rand = new Random();
+        int numOfBosses = rand.nextInt(2)+1;
+        for(int i = 0; i< numOfBosses; i++);
         
     }
 
     public void addEnemyRandom(){
         Random rand = new Random();
-        switch (rand.nextInt(3)) {
+        switch (rand.nextInt(2)+1) {
             case 1: // Troll
                 enemies.add(new Troll());
                 break;
@@ -72,8 +75,9 @@ public class Escenario {
         }
     }
 
-    public void isAttacking(Hero attacking, ArrayList<Fighter> list){
-        int index = vista.listOfFighters(list);
+    // doesnt work. 
+    public void isAttacking(Hero attacking, ArrayList<Enemy> list){
+        int index = vista.whoGetsAttacked();
 
         switch (vista.menuAttacking()) {
             case 1: // standart damage
@@ -100,24 +104,77 @@ public class Escenario {
                 break;
         
             case 1:
-                list.get(index).takingDamage(attacking.extradamage);
+                list.get(index).takingDamage(attacking.getExtraDamage());
                 break;
         }
 
     }
 
-    
+    public void addBossRandom(){
+        Random rand = new Random();
+        switch (rand.nextInt(1)+1) {
+            case 1: // TrollBOss
+                enemies.add(new BossTroll());
+                break;
+            
+            case 2:
+                enemies.add(new BossDwarf());
+                break;
+            
+            case 3:
+                enemies.add(new BossOrc());
+                break;
+        }
+    }
 
 
 
     public void match(){ // método que ejecutará el main. 
         settingPlayers();
         settingEnemies(vista.askingNumEnemies());
-
         // sección del menu.
         boolean stop = false;
         while(stop == false){
+            
 
-        } 
+            for(int turno = 0; turno <players.size(); turno ++){
+                int whoCategoryIsAttacked = vista.whoCategoryIsAttacked() ;
+                switch (whoCategoryIsAttacked) {
+                    case 1: // normal enemies
+                        vista.turnOfHero(turno, players);
+                        vista.listOfEnemies(enemies);
+                        int whoIsAttacked = vista.whoGetsAttacked();
+                            if(whoIsAttacked < enemies.size()){
+                                switch (vista.menuAttacking()) {
+                                    case 1: // standart damage
+                                        enemies.get(whoIsAttacked).takingDamage(players.get(turno).getAttackPoints());
+                                        vista.showLifeEnemies(enemies, whoIsAttacked);
+                                        break;
+                                
+                                    case 2: // item damage
+                                        enemies.get(whoIsAttacked).takingDamage(players.get(turno).useItem());
+                                        vista.showLifeEnemies(enemies, whoIsAttacked);
+                                        break;
+                            }
+                        }
+                        break;
+                
+                    default:
+                        break;
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+
     }
 }

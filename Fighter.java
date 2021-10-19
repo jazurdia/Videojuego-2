@@ -25,6 +25,10 @@ public abstract class Fighter {
         return name;
     }
 
+    public int getLife(){
+        return vida;
+    }
+
 
 
 
