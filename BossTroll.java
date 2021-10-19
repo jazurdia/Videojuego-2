@@ -5,7 +5,7 @@ public class BossTroll extends Boss {
         this.message = "Дни мужчин должны закончиться.";
         this.vida = 30;
         this.attackPoints = 15;
-        this.extradamage = 30;
+        this.extradamage = 15;
         this.nameOfAbility = "Super duper Hachazo" ;
 
     }

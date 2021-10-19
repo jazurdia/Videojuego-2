@@ -197,28 +197,15 @@ public class Vista {
         return index;
     }
 
+    public void cagaste(){
+        show("El equipo ha perdido los turnos, por no poner atención. ");
+    }
+
     public void showLifeEnemies(ArrayList<Enemy> list, int index){
         show("La vida de " + list.get(index).getName() + " es de " + list.get(index).getLife());
     }
 
-    public int whoCategoryIsAttacked(){
-        int whoCategoryIsAttacked = 0;
-        boolean stop = false;
-        Scanner in = new Scanner(System.in);
-        while (stop == false){
-            show("1. Enemigos Normales");
-            show("2. Enemigos Bosses");
-            show("3. RaidBoss");
-            try {
-                whoCategoryIsAttacked = in.nextInt();
-                stop = true;
-            } catch (Exception e) {
-                in = new Scanner (System.in);
-                denuevo();
-            }
-        }
-        return whoCategoryIsAttacked;
-    }
+    
     
     
 

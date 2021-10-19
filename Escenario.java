@@ -112,69 +112,87 @@ public class Escenario {
 
     public void addBossRandom(){
         Random rand = new Random();
-        switch (rand.nextInt(1)+1) {
-            case 1: // TrollBOss
-                enemies.add(new BossTroll());
-                break;
-            
-            case 2:
-                enemies.add(new BossDwarf());
-                break;
-            
-            case 3:
-                enemies.add(new BossOrc());
-                break;
+        int numOfBosses = rand.nextInt(2)+1;
+        for(int i = 0; i<numOfBosses; i++){
+            switch (rand.nextInt(1)+1) {
+                case 1: // TrollBOss
+                    enemies.add(new BossTroll());
+                    break;
+                
+                case 2:
+                    enemies.add(new BossDwarf());
+                    break;
+                
+                case 3:
+                    enemies.add(new BossOrc());
+                    break;
+            }
         }
+        
     }
 
 
-
     public void match(){ // método que ejecutará el main. 
+        
+        // setting all the actors in the match. 
         settingPlayers();
         settingEnemies(vista.askingNumEnemies());
-        // sección del menu.
+        addBossRandom();
+        enemies.add(new RaidBoss());
+        
+        
+        // Begin of the match.
+        vista.show("*****************************************************************");
         boolean stop = false;
         while(stop == false){
-            
 
             for(int turno = 0; turno <players.size(); turno ++){
-                int whoCategoryIsAttacked = vista.whoCategoryIsAttacked() ;
-                switch (whoCategoryIsAttacked) {
-                    case 1: // normal enemies
-                        vista.turnOfHero(turno, players);
-                        vista.listOfEnemies(enemies);
-                        int whoIsAttacked = vista.whoGetsAttacked();
-                            if(whoIsAttacked < enemies.size()){
-                                switch (vista.menuAttacking()) {
-                                    case 1: // standart damage
-                                        enemies.get(whoIsAttacked).takingDamage(players.get(turno).getAttackPoints());
-                                        vista.showLifeEnemies(enemies, whoIsAttacked);
-                                        break;
-                                
-                                    case 2: // item damage
-                                        enemies.get(whoIsAttacked).takingDamage(players.get(turno).useItem());
-                                        vista.showLifeEnemies(enemies, whoIsAttacked);
-                                        break;
+                vista.turnOfHero(turno, players);
+                vista.listOfEnemies(enemies);
+                int whoIsAttacked = vista.whoGetsAttacked();
+                if(whoIsAttacked < enemies.size()){
+                    switch (vista.menuAttacking()){
+                        case 1: // standart damage
+                            enemies.get(whoIsAttacked).takingDamage(players.get(turno).getAttackPoints());
+                            vista.showLifeEnemies(enemies, whoIsAttacked);
+                            if(enemies.get(whoIsAttacked).getLife() <= 0){
+                                enemies.remove(whoIsAttacked);
                             }
-                        }
-                        break;
+                            break;
+                    
+                        case 2: // item damage
+                            enemies.get(whoIsAttacked).takingDamage(players.get(turno).useItem());
+                            vista.showLifeEnemies(enemies, whoIsAttacked);
+                            if(players.get(whoIsAttacked).getLife() <= 0){
+                                players.remove(whoIsAttacked);
+                            }
+                            break;
+                    }
                 
-                    default:
-                        break;
-                }
+                }else{
+                    vista.cagaste();
+                }   
+
+            }
+
+            for(int turno = 0; turno < enemies.size(); turno ++){
+                Random rand = new Random();
+                
+                int whoHeroIsAttacked = rand.nextInt(players.size());
+                
+                
+
+
+
+
+
 
             }
 
 
 
-
-
-
-
-
-
         }
 
-
     }
+
 }
