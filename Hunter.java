@@ -14,17 +14,18 @@ public class Hunter extends Hero {
         this.vida = 5;
         this.attackPoints = 3;
         this.bagSize = 2;
+        addPetToPets();
 
     }    
 
     public void addPetToPets(){
         Random rand = new Random();
         switch (rand.nextInt(1)) {
-            case 1:
+            case 0:
                 pet = new PetBird();
                 break;
         
-            case 2:
+            case 1:
                 pet = new PetDog();
                 break;
         }

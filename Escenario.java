@@ -6,11 +6,12 @@ public class Escenario {
     ArrayList<Hero> players = new ArrayList<Hero>(); 
     ArrayList<Enemy> enemies = new ArrayList<Enemy>();
     ArrayList<String> turns = new ArrayList<String>();
+    int howManyPlayers;
 
     //El usuario decide la cantidad de heroes que habrá en la partida. 
     public void settingPlayers(){
-        boolean stop = false;
-        do {
+        this.howManyPlayers = vista.howManyPlayers();
+        for(int num = 0; num < howManyPlayers; num ++){
             int typeOfCharacter = vista.settingCharacter();
             switch (typeOfCharacter) {
             
@@ -28,15 +29,10 @@ public class Escenario {
                     players.add(new Hunter(vista.namingCharacter(), vista.messageOfCharacter()));
                     iteratingAdddingItemsToBag(2);
                     break;
-                
-                case 4:
-                    stop = true;
-                    break;
             }
-
         }
+
         
-        while(stop != true);
 
     }
 
@@ -136,6 +132,7 @@ public class Escenario {
         
         // setting all the actors in the match. 
         settingPlayers();
+        System.out.println(players.toString());
         enemies.add(new RaidBoss());
         settingEnemies(vista.askingNumEnemies());
         addBossRandom();
@@ -143,14 +140,11 @@ public class Escenario {
         
         // Begin of the match.
         vista.show("*****************************************************************");
+        vista.show("Bienvenido a la aventura. Te recomiendo llevar un equipo grande, porque la aventura será dificil. ");
         boolean stop = false;
-        while(stop == false){
-
+        do{
+            // ataque heroes.
             for(int turno = 0; turno <players.size(); turno ++){
-                if(enemies.get(0).getLife() <= 0){
-                    vista.youWon();
-                    stop = true;
-                }
                 vista.turnOfHero(turno, players);
                 vista.listOfEnemies(enemies);
                 int whoIsAttacked = vista.whoGetsAttacked();
@@ -159,19 +153,34 @@ public class Escenario {
                         case 1: // standart damage
                             enemies.get(whoIsAttacked).takingDamage(players.get(turno).getAttackPoints());
                             vista.showLifeEnemies(enemies, whoIsAttacked);
+                            
                             if(enemies.get(whoIsAttacked).getLife() <= 0){
                                 enemies.remove(whoIsAttacked);
-                            }                            
+                                if(enemies.isEmpty() == true){
+                                    vista.youWon();
+                                    stop = true;
+                                }else if(enemies.get(0).getName() == "Principe Marciano" && enemies.get(0).getLife() <= 0){
+                                    vista.youWon();
+                                    stop = true;
+                                }
+                            } 
 
                             break;
                     
                         case 2: // item damage
                             enemies.get(whoIsAttacked).takingDamage(players.get(turno).useItem());
                             vista.showLifeEnemies(enemies, whoIsAttacked);
+                            
                             if(enemies.get(whoIsAttacked).getLife() <= 0){
                                 enemies.remove(whoIsAttacked);
+                                if(enemies.isEmpty() == true){
+                                    vista.youWon();
+                                    stop = true;
+                                }else if(enemies.get(0).getName() == "Principe Marciano" && enemies.get(0).getLife() <= 0){
+                                    vista.youWon();
+                                    stop = true;
+                                }
                             }
-                        
                     }
                 
                 }else{
@@ -180,10 +189,11 @@ public class Escenario {
 
             }
 
+            // ataque enemigos
             for(int turno = 0; turno < enemies.size(); turno ++){
+                System.out.println(players.toString());
                 Random rand = new Random();
-                
-                int whoHeroIsAttacked = rand.nextInt(players.size()-1);
+                int whoHeroIsAttacked = rand.nextInt(howManyPlayers);
                 if(whoHeroIsAttacked <0){
                     vista.youLost();
                     stop = true;
@@ -194,7 +204,12 @@ public class Escenario {
                         vista.showLifeHeroes(players, whoHeroIsAttacked);
                         if(players.get(whoHeroIsAttacked).getLife() <= 0){
                             players.remove(whoHeroIsAttacked);
+                            if(players.isEmpty() == true){
+                                vista.youLost();
+                                stop = false;
+                            }
                         }
+                        
                         break;
                     
                     case 1: // extra damage
@@ -202,24 +217,22 @@ public class Escenario {
                         vista.showLifeHeroes(players, whoHeroIsAttacked);
                         if(players.get(whoHeroIsAttacked).getLife() <= 0){
                             players.remove(whoHeroIsAttacked);
+                            if(players.isEmpty() == true){
+                                vista.youLost();
+                                stop = false;
+                            }
                         }
+
                         break;
                 }
-
-                
-
-                
-
-
-
-
-
 
             }
 
 
 
         }
+
+        while(stop == false);
 
         vista.haTerminado();
 

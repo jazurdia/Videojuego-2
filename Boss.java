@@ -7,7 +7,7 @@ public class Boss extends Enemy{
     }
 
     public int getExtraDamage(){
-        extradamage = extradamage + 10;
+        extradamage = extradamage + 5;
         return extradamage;
     }
 

@@ -232,6 +232,14 @@ public class Vista {
         show("Han ganado el juego");
     }
 
+    public int howManyPlayers(){
+        Scanner scan = new Scanner(System.in);
+        show("Cuantos heroes habrán?");
+        int howManyPlayers=scan.nextInt();
+        return howManyPlayers;
+
+    }
+
     
     
     

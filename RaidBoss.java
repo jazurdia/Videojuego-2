@@ -8,9 +8,9 @@ public class RaidBoss extends Boss{
     public RaidBoss(){
         this.name = "Principe Marciano";
         this.message = "Al final, todo será mio!";
-        this.vida = 20;
+        this.vida = 100;
         this.attackPoints = 15;
-        this.extradamage = 20;
+        this.extradamage = 8;
         this.nameOfAbility = "Cañón destructor de mentes" ;
         this.hasClones = false;
     }

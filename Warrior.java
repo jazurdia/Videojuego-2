@@ -4,7 +4,7 @@ public class Warrior extends Hero{
         super(nombre, mensaje);
         //TODO Auto-generated constructor stub
 
-        this.vida = 20;
+        this.vida = 80;
         this.attackPoints = 8;
         this.bagSize = 3;
 
