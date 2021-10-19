@@ -1,8 +1,11 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Hunter extends Hero {
-
+    Vista vista = new Vista();
     ArrayList <Pet> pets = new ArrayList<Pet>();
+    boolean activePet = false;
+    Pet pet;
 
     public Hunter(String nombre, String mensaje) {
         super(nombre, mensaje);
@@ -14,12 +17,36 @@ public class Hunter extends Hero {
 
     }    
 
-    public void addPetToPets(Pet pet){
-        pets.add(pet);
+    public void addPetToPets(){
+        Random rand = new Random();
+        switch (rand.nextInt(1)) {
+            case 1:
+                pet = new PetBird();
+                break;
+        
+            case 2:
+                pet = new PetDog();
+                break;
+        }
+        vista.tellPet(name, pet.getName());
+
     }
 
-    public Pet launchPet(){
-        return pets.get(0);
+
+    @Override
+    public int getAttackPoints(){
+        if(activePet == true){
+            attackPoints = attackPoints + pet.getAttackPoints();
+        }else{
+            if(pet.getCoolDown() <= 0){
+                this.activePet = true;
+
+            }else{
+                this.attackPoints = 3;
+            }
+        }
+        
+        return attackPoints;
     }
 
     

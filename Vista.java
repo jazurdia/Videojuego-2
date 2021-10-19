@@ -205,6 +205,33 @@ public class Vista {
         show("La vida de " + list.get(index).getName() + " es de " + list.get(index).getLife());
     }
 
+
+    public void showLifeHeroes(ArrayList<Hero> list, int index){
+        show("La vida de " + list.get(index).getName() + " es de " + list.get(index).getLife());
+
+    }
+
+    public void hmClones(int num, String nameRaidBoss){
+        show("Se han hecho " + num + " clones de " + nameRaidBoss +  ". ");
+    }
+
+    public void tellPet(String name, String namePet){
+        show("La mascota del cazador "+name+" es "+namePet);
+    }
+
+    public void youLost(){
+        show("has perdido");
+        denuevo();
+    }
+
+    public void haTerminado(){
+        show("El juego ha terminado. Pls ponganme buena nota me esforcé un montón jaja");
+    }
+
+    public void youWon(){
+        show("Han ganado el juego");
+    }
+
     
     
     

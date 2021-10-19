@@ -32,5 +32,9 @@ public class Pet extends Fighter{
             reGenerate();
         }
     }
+
+    public int getCoolDown(){
+        return coolDown;
+    }
    
 }

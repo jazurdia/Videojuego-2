@@ -136,9 +136,9 @@ public class Escenario {
         
         // setting all the actors in the match. 
         settingPlayers();
+        enemies.add(new RaidBoss());
         settingEnemies(vista.askingNumEnemies());
         addBossRandom();
-        enemies.add(new RaidBoss());
         
         
         // Begin of the match.
@@ -147,6 +147,10 @@ public class Escenario {
         while(stop == false){
 
             for(int turno = 0; turno <players.size(); turno ++){
+                if(enemies.get(0).getLife() <= 0){
+                    vista.youWon();
+                    stop = true;
+                }
                 vista.turnOfHero(turno, players);
                 vista.listOfEnemies(enemies);
                 int whoIsAttacked = vista.whoGetsAttacked();
@@ -157,16 +161,17 @@ public class Escenario {
                             vista.showLifeEnemies(enemies, whoIsAttacked);
                             if(enemies.get(whoIsAttacked).getLife() <= 0){
                                 enemies.remove(whoIsAttacked);
-                            }
+                            }                            
+
                             break;
                     
                         case 2: // item damage
                             enemies.get(whoIsAttacked).takingDamage(players.get(turno).useItem());
                             vista.showLifeEnemies(enemies, whoIsAttacked);
-                            if(players.get(whoIsAttacked).getLife() <= 0){
-                                players.remove(whoIsAttacked);
+                            if(enemies.get(whoIsAttacked).getLife() <= 0){
+                                enemies.remove(whoIsAttacked);
                             }
-                            break;
+                        
                     }
                 
                 }else{
@@ -178,8 +183,31 @@ public class Escenario {
             for(int turno = 0; turno < enemies.size(); turno ++){
                 Random rand = new Random();
                 
-                int whoHeroIsAttacked = rand.nextInt(players.size());
+                int whoHeroIsAttacked = rand.nextInt(players.size()-1);
+                if(whoHeroIsAttacked <0){
+                    vista.youLost();
+                    stop = true;
+                }
+                switch (rand.nextInt(1)) {
+                    case 0:// ataque normal
+                        players.get(whoHeroIsAttacked).takingDamage(enemies.get(turno).getAttackPoints());
+                        vista.showLifeHeroes(players, whoHeroIsAttacked);
+                        if(players.get(whoHeroIsAttacked).getLife() <= 0){
+                            players.remove(whoHeroIsAttacked);
+                        }
+                        break;
+                    
+                    case 1: // extra damage
+                        players.get(whoHeroIsAttacked).takingDamage(enemies.get(turno).getExtraDamage());
+                        vista.showLifeHeroes(players, whoHeroIsAttacked);
+                        if(players.get(whoHeroIsAttacked).getLife() <= 0){
+                            players.remove(whoHeroIsAttacked);
+                        }
+                        break;
+                }
+
                 
+
                 
 
 
@@ -192,6 +220,8 @@ public class Escenario {
 
 
         }
+
+        vista.haTerminado();
 
     }
 
