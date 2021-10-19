@@ -33,17 +33,6 @@ public abstract class Hero extends Fighter {
     public int getBagSize(){
         return bagSize;
     }
-    
-    // Pero, si se usa de uno en uno, entonces que? REVISAR ESTA MADRE NO SIRVE JAJA
-    public void remItemFromBag(String itemName){ // elimina un item de la lista. 
-        for(int i = 0; i<bagOfItems.size(); i++){
-            if(itemName == bagOfItems.get(i).getName()){
-                bagOfItems.remove(i);
-            } else{
-                //mensaje de "no se pudo"
-            }
-        }
-    }
 
     public int useItem(){
         int effectOfItem = bagOfItems.get(0).getEffect();

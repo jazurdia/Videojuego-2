@@ -15,8 +15,6 @@ public class RaidBoss extends Boss{
         this.hasClones = false;
     }
 
-    
-
     public void cloningItself(){
         
         if(hasClones == false){
@@ -61,8 +59,4 @@ public class RaidBoss extends Boss{
         return attackPoints;
     }
 
-
-
-
-    
 }

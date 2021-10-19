@@ -3,7 +3,6 @@ import java.util.Random;
 
 public class Hunter extends Hero {
     Vista vista = new Vista();
-    ArrayList <Pet> pets = new ArrayList<Pet>();
     boolean activePet = false;
     Pet pet;
 

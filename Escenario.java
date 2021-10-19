@@ -5,7 +5,6 @@ public class Escenario {
     Vista vista = new Vista();
     ArrayList<Hero> players = new ArrayList<Hero>(); 
     ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-    ArrayList<String> turns = new ArrayList<String>();
     int howManyPlayers;
 
     //El usuario decide la cantidad de heroes que habrá en la partida. 
@@ -71,22 +70,6 @@ public class Escenario {
         }
     }
 
-    // doesnt work. 
-    public void isAttacking(Hero attacking, ArrayList<Enemy> list){
-        int index = vista.whoGetsAttacked();
-
-        switch (vista.menuAttacking()) {
-            case 1: // standart damage
-                list.get(index).takingDamage(attacking.getAttackPoints());
-                break;
-        
-            case 2: // item damage
-                list.get(index).takingDamage(attacking.useItem());
-                break;
-        }
-
-    }
-
     public void isAttacking(Enemy attacking, ArrayList<Fighter> list){
         Random rand = new Random();
         int index = rand.nextInt(list.size()-1);
@@ -126,7 +109,6 @@ public class Escenario {
         }
         
     }
-
 
     public void match(){ // método que ejecutará el main. 
         
