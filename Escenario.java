@@ -72,8 +72,38 @@ public class Escenario {
         }
     }
 
-    public void isAttacking(Fighter attacking, ArrayList<Fighter> list, int index){
-        list.get(index).takingDamage(attacking.getAttackPoints());
+    public void isAttacking(Hero attacking, ArrayList<Fighter> list){
+        int index = vista.listOfFighters(list);
+
+        switch (vista.menuAttacking()) {
+            case 1: // standart damage
+                list.get(index).takingDamage(attacking.getAttackPoints());
+                break;
+        
+            case 2: // item damage
+                list.get(index).takingDamage(attacking.useItem());
+                break;
+        }
+
+    }
+
+    public void isAttacking(Enemy attacking, ArrayList<Fighter> list){
+        Random rand = new Random();
+        int index = rand.nextInt(list.size()-1);
+        if(index <= 0 ){
+            index = 0;
+        } 
+        int desicion = rand.nextInt(1);
+        switch (desicion) {
+            case 0: // standart damage
+                list.get(index).takingDamage(attacking.getAttackPoints());
+                break;
+        
+            case 1:
+                list.get(index).takingDamage(attacking.extradamage);
+                break;
+        }
+
     }
 
     

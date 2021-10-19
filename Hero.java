@@ -34,7 +34,7 @@ public abstract class Hero extends Fighter {
         return bagSize;
     }
     
-    // Pero, si se usa de uno en uno, entonces que? REVISAR 
+    // Pero, si se usa de uno en uno, entonces que? REVISAR ESTA MADRE NO SIRVE JAJA
     public void remItemFromBag(String itemName){ // elimina un item de la lista. 
         for(int i = 0; i<bagOfItems.size(); i++){
             if(itemName == bagOfItems.get(i).getName()){
@@ -43,6 +43,12 @@ public abstract class Hero extends Fighter {
                 //mensaje de "no se pudo"
             }
         }
+    }
+
+    public int useItem(){
+        int effectOfItem = bagOfItems.get(0).getEffect();
+        bagOfItems.remove(0);
+        return effectOfItem;
     }
 
     

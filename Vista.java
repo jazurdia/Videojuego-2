@@ -141,7 +141,7 @@ public class Vista {
         return num;
     }
 
-    public int menu(){
+    public int menuAttacking(){
         int menu = 0;
         boolean stop = false;
         Scanner in = new Scanner(System.in);
