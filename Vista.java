@@ -141,7 +141,45 @@ public class Vista {
         return num;
     }
 
+    public int menu(){
+        int menu = 0;
+        boolean stop = false;
+        Scanner in = new Scanner(System.in);
+        while(stop == false){
+            show("Selecciona tu accion.");
+            show("1. Atacar");
+            show("2. Usar orbe");
+            show("3. Pasar");
+            try {
+                menu = in.nextInt();
+                stop = true;
+            } catch (Exception e) {
+                in = new Scanner(System.in);
+                denuevo();
+            }
+        }
+        return menu;
+    }
 
+    public int listOfFighters(ArrayList<Fighter> list){
+        int index = 0;
+        boolean stop = false;
+        Scanner in = new Scanner(System.in);
+        for(int i=0; i<list.size() ; i++){
+            show("no. " + i + " - " + list.get(i).getName());
+        }
+        while (stop == false){
+            show("Ingresa el número de quien quieras atacar. ");
+            try {
+                index = in.nextInt();
+                stop = true;
+            } catch (Exception e) {
+                in = new Scanner (System.in);
+                denuevo();
+            }
+        }
+        return index;
+    }
     
     
 

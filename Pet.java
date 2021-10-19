@@ -6,9 +6,6 @@ public class Pet extends Fighter{
         super(name, message);
         //TODO Auto-generated constructor stub
 
-        this.vida = 5;
-        this.coolDown = 0;
-
     }
 
     public Pet(){ // CONSTRUCTOR ALTERNATIVO

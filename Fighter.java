@@ -21,6 +21,10 @@ public abstract class Fighter {
         return attackPoints;
     }
 
+    public String getName(){
+        return name;
+    }
+
 
 
 

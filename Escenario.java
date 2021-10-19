@@ -5,6 +5,7 @@ public class Escenario {
     Vista vista = new Vista();
     ArrayList<Hero> players = new ArrayList<Hero>(); 
     ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    ArrayList<String> turns = new ArrayList<String>();
 
     //El usuario decide la cantidad de heroes que habrá en la partida. 
     public void settingPlayers(){
@@ -15,29 +16,17 @@ public class Escenario {
             
                 case 1:
                     players.add(new Warrior(vista.namingCharacter(), vista.messageOfCharacter()));                    
-                    //**************************************************** */
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
+                    iteratingAdddingItemsToBag(3);
                     break;
             
                 case 2:
                     players.add(new Explorer(vista.namingCharacter(), vista.messageOfCharacter()));
-                    //**************************************************** */
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems()); // 1r item, luego arreglo esto jaja. 
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
+                    iteratingAdddingItemsToBag(6);
                     break;
     
                 case 3: 
                     players.add(new Hunter(vista.namingCharacter(), vista.messageOfCharacter()));
-                    //**************************************************** */
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    players.get(players.size()-1).addItemToBag(vista.selectingItems());
-                    
+                    iteratingAdddingItemsToBag(2);
                     break;
                 
                 case 4:
@@ -77,22 +66,28 @@ public class Escenario {
         }
     }
 
+    public void iteratingAdddingItemsToBag(int num){
+        for(int i=0;i< num ;i++){
+            players.get(players.size()-1).addItemToBag(vista.selectingItems());
+        }
+    }
 
+    public void isAttacking(Fighter attacking, ArrayList<Fighter> list, int index){
+        list.get(index).takingDamage(attacking.getAttackPoints());
+    }
 
-
-
-
-
-
-
-
-
-
+    
 
 
 
     public void match(){ // método que ejecutará el main. 
         settingPlayers();
         settingEnemies(vista.askingNumEnemies());
+
+        // sección del menu.
+        boolean stop = false;
+        while(stop == false){
+
+        } 
     }
 }
